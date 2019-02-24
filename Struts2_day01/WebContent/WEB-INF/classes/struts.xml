@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+
+<struts>  
+<!-- 配置常量 -->
+<constant name="struts.i18n.encoding" value="utf-8"></constant>
+
+  <package name="hellodemo" namespace="/" extends="struts-default">  
+    	<!-- name:访问名称  -->
+        <action name="hello" class="yc.HelloAction" method="add">  
+          <!--   定义逻辑视图和物理资源之间的映射  
+            配置方法的返回值页面（页面跳转） -->
+            <result name="ok" >hello.jsp</result>  
+        </action>  
+    </package> 
+    
+    <!-- 引入其他配置文件 -->
+    <include file="yc/hello.xml"></include>
+    <include file="yc/Book.xml"></include>
+</struts>  
