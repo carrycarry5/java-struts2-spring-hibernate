@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 
+	1.配置类和表对应
+	class：标签
+	name: 实体类的全路径
+	table：表名
+ -->
+<hibernate-mapping>
+	<class name="entity.Customer"  table="t_customer">
+
+		  <id name="cid" column="cid">
+
+		  	<generator class="native"></generator>
+		  </id>
+		  
+
+		  <property name="custName" column="custName"></property>
+		  <property name="custLevel" column="custLevel"></property>
+		  <property name="custSource" column="custSource"></property>
+		  <property name="custPhone" column="custPhone"></property>
+		  <property name="custMobile" column="custMobile"></property>
+		  <!-- 在客户映射文件中表示所有联系人
+		  	 使用set标签表示所有联系人
+		  	 name属性：填写在客户实体类里面创建的set集合属性名
+		   -->
+		   <set name="setLinkMan" cascade="save-update,delete" inverse="true">
+		   <!-- 一对多建表，要有一个外键
+		   		hibernate机制：双向维护外键，在一和多双方都要有外键
+		    -->
+		    <key column="clid"></key>
+		    
+		    <!-- 客户所有联系人，class里面写联系人实体类的全路径 -->
+		    <one-to-many class="entity.LinkMan"/>
+		   </set>
+		  
+	</class>
+</hibernate-mapping>

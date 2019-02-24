@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 
+	1.配置类和表对应
+	class：标签
+	name: 实体类的全路径
+	table：表名
+ -->
+<hibernate-mapping>
+	<class name="entity.User"  table="t_user">
+		<!-- 
+			2.配置实体类的id和表的id一一对应
+			hibernate要求实体类里有一个属性为唯一
+			hibernate要求表有字段为唯一
+		 -->
+		 <!-- 
+		 	id标签
+		 	name：实体类里id属性的名称
+		 	column：生成表字段的名称
+		  -->
+		  <id name="uid" column="uid">
+		  	<!-- 设置数据库表id的增长策略 
+		  		native：根据本地数据库帮你选择哪个值
+		  		uuid：生成一个随机的uuid值
+		  	-->
+		  	<generator class="native"></generator>
+		  </id>
+		  
+		  <!-- 配置其他属性和表的对应 -->
+		  <property name="name" column="name"></property>
+		  <property name="password" column="password"></property>
+		  <property name="address" column="address"></property>
+	</class>
+</hibernate-mapping>

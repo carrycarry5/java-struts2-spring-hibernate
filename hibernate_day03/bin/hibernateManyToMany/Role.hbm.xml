@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- 
+	1.配置类和表对应
+	class：标签
+	name: 实体类的全路径
+	table：表名
+ -->
+<hibernate-mapping>
+	<class name="hibernateManyToMany.Role"  table="m_role">
+
+		  <id name="id" column="id">
+
+		  	<generator class="native"></generator>
+		  </id>
+		  
+
+		  <property name="name" column="name"></property>
+		  <property name="memo" column="memo"></property>
+
+		   <set name="setUser"  table="user_role" cascade="save-update,delete">
+		<!-- 配置在第三张表里的外键的名字 -->
+			<key column="roleid"></key>
+			<!-- column:用户在第三张表的外键的名称
+				class：用户的路径
+			 -->
+			<many-to-many column="userid" class="hibernateManyToMany.User"></many-to-many>
+		</set>
+		  
+	</class>
+</hibernate-mapping>
