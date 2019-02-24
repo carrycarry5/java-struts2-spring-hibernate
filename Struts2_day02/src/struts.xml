@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="demo1" extends="struts-default" namespace="/">
+	
+		<!--  全局结果页面 -->
+<!-- 		<global-results>
+			<result name="ok" type="redirect">hello.jsp</result>
+		</global-results> -->
+	
+		<action name="book" class="yc.BookAction" >
+			<result name="ok" type="redirectAction">orders.action</result>
+		</action>
+		<action name="orders" class="yc.OrdersAction">
+			<result name="ok" type="redirect">hello.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 获取表单提交的数据 -->
+	<package name="demo2" extends="struts-default" namespace="/">
+		<action name="f" class="form.form1">
+		</action>
+		<action name="data3" class="deta.DataDemoAction3"></action>
+		<action name="data4" class="deta.DataDemoAction4"></action>
+	</package>
+	
+	<package name="data1" extends="struts-default" namespace="/">
+		<action name="data1" class="deta.DataAction1">
+			
+		</action>
+	
+	</package>
+	
+	 <package name="d" extends="struts-default" namespace="/">
+        <action name="data2" class="deta.DataDemo2Action"></action>
+    </package>
+</struts>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="p1" namespace="/" extends="struts-default">
+	<global-results>
+		<result name="ok">ognl.jsp</result>
+		<result name="sok">stack.jsp</result>
+	</global-results>
+	
+		<action name="a1" class="yc.action.action1" method="execute">
+		</action>
+		<action name="a2" class="yc.action.ObjectAction" method="execute">
+		</action>
+		<action name="a3" class="yc.action.ListAction" method="execute">
+		</action>
+		<action name="s1" class="yc.valueStack.valueStackAction" method="execute">
+		</action>
+		<action name="t1" class="test.Test">
+			<result name="haha">haha.jsp</result>
+		</action>
+	</package>
+	
+</struts>
