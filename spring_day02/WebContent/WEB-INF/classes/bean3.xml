@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+		
+		<!-- 配置对象 -->
+		<bean id="book" class="yc.aop.Book"></bean>
+		<bean id="mybook" class="yc.aop.Mybook"></bean>
+		
+		<!-- 配置aop -->
+		<aop:config>
+			<!-- 配置切入点 -->
+			<aop:pointcut expression="execution(* yc.aop.Book.*(..))" id="pointcut1"/>
+			<!-- 配置切面
+				把增强用到方法上面
+			 -->
+			<aop:aspect ref="mybook">
+				<!-- 配置增强类型 -->
+				<aop:before method="before1" pointcut-ref="pointcut1"/>
+				<aop:after-returning method="after1" pointcut-ref="pointcut1"/>
+				<aop:around method="arround1" pointcut-ref="pointcut1"/>
+			</aop:aspect>
+		</aop:config>
+</beans>
